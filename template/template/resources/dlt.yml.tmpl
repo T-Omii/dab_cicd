@@ -1,0 +1,13 @@
+resources:
+  pipelines:
+    test_pipeline:
+      name: "DLT Pipeline"
+      libraries:
+        - notebook:
+            path: "../notebooks/hello.ipynb"
+      target: {{.dlt_schema}}
+      development: true
+      photon: true
+      channel: PREVIEW
+      catalog: {{.dlt_catalog}}
+      serverless: true

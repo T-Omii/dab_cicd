@@ -1,0 +1,41 @@
+name: "DLT CD/CD Pipeline CD"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "release"
+
+defaults:
+  run:
+    working-directory: ./template
+
+env:
+  DATABRICKS_TOKEN: ${{ secrets.PROD_DATABRICKS_TOKEN }}
+
+jobs:
+  prod_deploy:
+    name: "Deploy bundle"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Databricks CLI
+        uses: databricks/setup-cli@main
+
+      - name: Validate
+        id: validate
+        run: |
+          databricks bundle validate -t prod
+      
+      - name: Deploy
+        id: deploy
+        run: |
+          databricks bundle deploy -t prod
+      
+      - name: Run Pipeline
+        id: run
+        run: |
+          databricks bundle run -t prod test_job --full-refresh-all
