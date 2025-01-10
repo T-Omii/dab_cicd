@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - "release"
+      - "main"
 
 defaults:
   run:
-    working-directory: ./template
+    working-directory: ./project
 
 env:
   DATABRICKS_TOKEN: ${{ secrets.PROD_DATABRICKS_TOKEN }}
@@ -38,4 +38,4 @@ jobs:
       - name: Run Pipeline
         id: run
         run: |
-          databricks bundle run -t prod test_job --full-refresh-all
+          databricks bundle run -t prod bundle_job --full-refresh-all

@@ -7,7 +7,7 @@ on:
 
 defaults:
   run:
-    working-directory: ./template
+    working-directory: ./project
 
 env:
   DATABRICKS_TOKEN: ${{ secrets.DEV_DATABRICKS_TOKEN }}
@@ -38,4 +38,4 @@ jobs:
       - name: Run Pipeline
         id: run
         run: |
-          databricks bundle run -t dev test_job --full-refresh-all
+          databricks bundle run -t dev bundle_job --full-refresh-all

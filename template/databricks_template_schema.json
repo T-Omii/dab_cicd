@@ -1,0 +1,23 @@
+{
+    "properties": {
+       "project_name": {
+          "type": "string",
+          "default": "bundle",
+          "description": "project name",
+          "order": 1
+       },
+       "dlt_catalog": {
+          "type": "string",
+          "default": "bundle",
+          "description": "dlt target catalog",
+          "order": 2
+       },
+       "dlt_schema": {
+          "type": "string",
+          "default": "bundle",
+          "description": "dlt target schema",
+          "order": 3
+       }
+    },
+    "success_message": "\n✨Your bundle '{{.project_name}}' has been created✨."
+ }

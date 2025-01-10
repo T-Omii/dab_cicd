@@ -1,10 +1,10 @@
 resources:
   pipelines:
-    test_pipeline:
+    bundle_pipeline:
       name: "DLT Pipeline"
       libraries:
         - notebook:
-            path: "../notebooks/hello.ipynb"
+            path: "../notebooks/${bundle.environment}/hello.ipynb"
       target: {{.dlt_schema}}
       development: true
       photon: true

@@ -1,14 +1,14 @@
 resources:
   jobs:
-    test_job:
+    bundle_job:
       name: "Job"
       tasks:
         - task_key: task1
           notebook_task:
-            notebook_path: ../notebooks/hello.ipynb
+            notebook_path: ../notebooks/${bundle.environment}/hello.ipynb
         - task_key: task2
           depends_on:
             - task_key: task1
           pipeline_task:
-            pipeline_id: ${resources.pipelines.pipeline_test.id}
+            pipeline_id: ${resources.pipelines.bundle_pipeline.id}
             full_refresh: true
