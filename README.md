@@ -1,6 +1,5 @@
 
-#ルートディレクトリで以下のコマンドを実行  
-```
+#ルートディレクトリで以下のコマンドを実行
 databricks bundle init ./template -p DAB --config-file tmp_config.json --output-dir project
 ```
 
